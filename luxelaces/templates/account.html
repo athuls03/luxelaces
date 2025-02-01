@@ -1,0 +1,37 @@
+{% extends 'blank_layout.html' %}
+
+{% block banner %}
+{% include 'account_banner.html' %}
+{% endblock banner %}
+
+{% block content %}
+{% block extra_scripts %}
+<script>
+    var LoginForm = document.getElementById("LoginForm");
+    var RegForm = document.getElementById("RegForm");
+    var Indicator = document.getElementById("Indicator");
+
+    function register() {
+        LoginForm.style.display = "none";
+        RegForm.style.display = "block";
+        Indicator.style.transform = "translateX(100px)"; // Move indicator to Register position
+    }
+
+    function login() {
+        LoginForm.style.display = "block";
+        RegForm.style.display = "none";
+        Indicator.style.transform = "translateX(0px)"; // Move indicator to Login position
+    }
+
+</script>
+{% if register %}
+    <script>
+        register()
+    </script>
+{% else %}
+    <script>
+        login()
+    </script>
+{% endif %}
+{% endblock %}
+{% endblock content %}
