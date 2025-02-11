@@ -12,14 +12,19 @@
 
         </div>
         <div class="col-2">
-            <p>{{product.title}}</p>
+            <p>{{product.brand}}</p>
             <h1>{{product.title}}</h1>
             <h4>₹{{product.price}}</h4>
-            
-            <input type="number" value="1">
-            <a href="" class="btn">Add To Cart</a>
 
-            <h3>Product Details <i class="fa fa-indent"></i></h3>
+            <form action="{% url 'add_to_cart' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" value="{{ product.id }}" name="product_id"/>
+            <h4>Size: UK<input type="number" value="5" min="5" max="10"> </h4>
+            <h5>Qty <input type="number" name="quantity" value="1" min="1"></h5>
+            <button type="submit" class="btn">Add To Cart</button>
+            </form> 
+
+            <h3>Product Details </h3>
             <br>
             <p>{{ product.description }}</p>
         </div>

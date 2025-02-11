@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . admin import Product
 from django.core.paginator import Paginator
+from random import shuffle
 
 # Create your views here.
 
@@ -11,8 +12,21 @@ def index(request):
         "featured_products":featured_products,
         "latest_products":latest_products
     }
-    # print(context)
     return render(request,'index.html',context)
+
+# def index(request):
+#     all_products = Product.objects.all()
+#     shuffled_products = list(all_products) 
+#     shuffle(shuffled_products) 
+
+#     featured_products = shuffled_products[:4]
+#     latest_products = shuffled_products[4:8]  # Assuming you want 4 latest products as well
+
+#     context = {
+#         "featured_products": featured_products,
+#         "latest_products": latest_products
+#     }
+#     return render(request, 'index.html', context)
 
 def list_products(request):
     """_summary_

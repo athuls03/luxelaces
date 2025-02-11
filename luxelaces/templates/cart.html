@@ -3,5 +3,14 @@
 
 
 {% block content %}
-    {% include 'cart_container.html' %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="small-container cart-page">
+        <div class="{{ message.tags }}"><li>{{ message }}</li></div>
+    </div>                    
+    {% endfor %}
+{% else %}
+{% include 'cart_container.html' %}
+{% endif %}
+
 {% endblock content %}
